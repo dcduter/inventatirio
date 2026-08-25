@@ -56,7 +56,21 @@ inventatirio/
 
 ---
 
-## 📋 4. Plan Sugerido de Aprendizaje y Desarrollo
+## 📦 4. Dependencias Principales del Proyecto (composer.json)
+
+| Dependencia | Función en el Proyecto |
+| :--- | :--- |
+| **`laravel/framework`** | El motor principal de Laravel (enrutador, Eloquent ORM, migrador, contenedor de servicios, etc.). |
+| **`laravel/jetstream`** | Kit de inicio oficial para gestión completa de autenticación, perfiles de usuario, fotos, 2FA y sesiones. |
+| **`livewire/livewire`** | Framework para crear interfaces dinámicas y reactivas en tiempo real escribiendo código PHP + Blade en lugar de JavaScript complejo. |
+| **`wireui/wireui`** | Librería de componentes UI preconstruidos (botones, modales, selectores, notificaciones) diseñada para Livewire y Tailwind CSS. |
+| **`laravel-lang/common`** | Proporciona las traducciones al español de los mensajes de validación, autenticación y errores de Laravel. |
+| **`laravel/sanctum`** | Sistema ligero de autenticación para tokens de API y autenticación de aplicaciones móviles o SPAs. |
+| **`laravel/tinker`** | Consola interactiva REPL para probar comandos PHP y consultas Eloquent directamente desde la terminal (`php artisan tinker`). |
+
+---
+
+## 📋 5. Plan Sugerido de Aprendizaje y Desarrollo
 
 - [ ] **Fase 1: Base de Datos y Modelos**
   - Crear modelo y migración de `Category` (Categorías).
@@ -71,3 +85,4 @@ inventatirio/
 
 ---
 *Este documento se irá actualizando a medida que avancemos en el desarrollo del proyecto.*
+

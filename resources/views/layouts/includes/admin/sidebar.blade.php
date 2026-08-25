@@ -103,7 +103,7 @@
                             </button>
                             <ul id="dropdown-{{ $loop->index }}" class="hidden py-2 space-y-2">
 
-                            {{-- Lista de menú de opciones de submenús --}}
+                            <!-- lista menu de opciones de submenus -->
                                 @foreach ($link['submenu'] as $item)
                                     <li>
                                         <a href="{{ $item['href'] }}"

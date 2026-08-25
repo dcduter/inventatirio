@@ -71,3 +71,10 @@ Si descubres una vulnerabilidad de seguridad dentro de Laravel, por favor envía
 ## Licencia
 
 El framework Laravel es software de código abierto licenciado bajo la [licencia MIT](https://opensource.org/licenses/MIT).
+
+
+
+# servidor local wamp64 
+
+inventario.test
+C:\wamp64\www\laravel\inventatirio\public
