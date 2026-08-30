@@ -16,14 +16,17 @@
 
     <title>{{ $title }}</title>
 
+    {{-- sweetalert2 --}}
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- wireui -->
-       <wireui:scripts />
-       <script src="//unpkg.com/alpinejs" defer></script>
+    <!-- cambio por IA: Removida la etiqueta CDN manual de AlpineJS porque Livewire 3 ya incluye AlpineJS integrado y la doble inicialización provocaba la falla de renderizado -->
+    <wireui:scripts />
 
        <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -58,6 +61,15 @@
     @livewireScripts
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+      @if (session('swal'))
+          <script>
+             Swal.fire(@json(session('swal')));
+             
+          </script>
+      @endif 
+
+      @stack('js')
 </body>
 
 </html>

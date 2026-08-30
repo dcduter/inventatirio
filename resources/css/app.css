@@ -1,8 +1,7 @@
+/* cambio por IA: Removido @import de wireui/global.css ya que WireUI v2 con Tailwind v3 usa preset en tailwind.config.js */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import '../../vendor/wireui/wireui/ts/global.css';
 
 [x-cloak] {
     display: none !important;

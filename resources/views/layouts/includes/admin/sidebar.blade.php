@@ -21,10 +21,21 @@
         [
             'header' => 'Administrar Páginas'
         ],
-        // Elemento del menú: Dashboard
+
         [
+        
+          'name' => 'Categorias',
+          'icon' => 'fa-solid fa-list',
+          'href' => route('admin.categories.index'),
+          'active' => request()->routeIs('admin.categories.*')
+        
+        ]
+
+
+        // Elemento del menú: Dashboard
+    /*     [
             // Nombre visible que se mostrará en la opción del menú
-            "name" => "Dashboard",
+            "name" => "juan",
             // Genera la URL dinámica a partir del nombre de la ruta registrada en Laravel
             "href" => route('admin.dashboard'),
             // Clases CSS de FontAwesome para el ícono representativo
@@ -52,7 +63,7 @@
                 ]
 
             ]
-        ]
+        ] */
 
 
     ];
