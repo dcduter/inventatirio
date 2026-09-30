@@ -32,6 +32,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles
+    {{-- cambio por IA: Agregado el stack de CSS para que funcione Dropzone y otros estilos empujados desde las vistas --}}
+    @stack('css')
 </head>
 
 <body class="font-sans antialiased bg-gray-50">

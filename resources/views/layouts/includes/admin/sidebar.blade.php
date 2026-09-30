@@ -29,6 +29,14 @@
           'href' => route('admin.categories.index'),
           'active' => request()->routeIs('admin.categories.*')
         
+        ],
+
+        [
+          'name' => 'Productos',
+          'icon' => 'fa-solid fa-box',
+          'href' => route('admin.products.index'),
+          'active' => request()->routeIs('admin.products.*')
+        
         ]
 
 

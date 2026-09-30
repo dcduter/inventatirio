@@ -78,3 +78,5 @@ El framework Laravel es software de código abierto licenciado bajo la [licencia
 
 inventario.test
 C:\wamp64\www\laravel\inventatirio\public
+modelo de la base de datos
+![alt text](<Captura de pantalla 2026-09-26 031124.png>)
