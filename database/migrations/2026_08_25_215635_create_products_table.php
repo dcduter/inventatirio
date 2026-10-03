@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('description')->nullable();
+            $table->text('description')->nullable(); // cambio por IA: text permite descripciones más largas (VARCHAR solo admite 255)
             $table->string('sku')
                 ->unique()
                 ->nullable();

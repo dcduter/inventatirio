@@ -3,20 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Supplier extends Model
 {
     //
-    protected $fillable = [
 
+    use HasFactory;
+    // cambio por IA: corregido document_number y agregado name para asignación masiva
+    protected $fillable = [
         'identity_id',
-        'document_id',
+        'document_number',
+        'name',
         'address',
         'email',
-        'phone'
-
-
-
+        'phone',
     ];
 
         // Relacion uno a muchos inversa

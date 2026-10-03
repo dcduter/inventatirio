@@ -10,8 +10,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Supplier;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -33,9 +35,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            IdentitySeeder::class,
             categorySeeder::class
         ]);
 
+        Customer::factory(50)->create();
+        Supplier::factory(50)->create();
+        
+
+ 
         // genera producto por factory 100
         Product::factory(100)->create();
     }

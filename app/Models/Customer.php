@@ -2,21 +2,21 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    //
-    protected $fillable =[
 
+    use HasFactory;
+    // cambio por IA: Atributos asignables masivamente correspondientes a la tabla customers
+    protected $fillable = [
         'identity_id',
-        'document_id',
+        'document_number',
+        'name',
         'address',
         'email',
-        'phone'
-
-
-
+        'phone',
     ];
 
     // Relacion uno a muchos inversa
