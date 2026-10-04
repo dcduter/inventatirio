@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Admin\Datables;
+namespace App\Livewire\Admin\Datatables;
 
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -27,7 +27,7 @@ class CategoryTable extends DataTableComponent
                 ->sortable(),
             Column::make("Descripción", "description")
                 ->sortable(),
-            column::make('Acciones')
+            column::make('Acciones')    
                 ->label(function($row){
                     return view('admin.categories.actions', ['category' => $row]);
                 })

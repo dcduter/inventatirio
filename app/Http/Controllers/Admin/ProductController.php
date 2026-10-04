@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule; // cambio por IA
 
 class ProductController extends Controller
 {
@@ -91,12 +92,27 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        // cambio por IA: Validación con exclusión de ID actual para unicidad
+        // cambio por IA: Validación estricta con Rule::unique ignorando el ID actual
         $data = $request->validate([
-            'name' => 'required|string|max:250|unique:products,name,' . $product->id,
-            'description' => 'nullable|string|max:500',
-            'sku' => 'nullable|string|max:45|unique:products,sku,' . $product->id,
-            'barcode' => 'nullable|string|max:45|unique:products,barcode,' . $product->id,
+            'name' => [
+                'required',
+                'string',
+                'max:250',
+                Rule::unique('products', 'name')->ignore($product->id),
+            ],
+            'description' => 'nullable|string',
+            'sku' => [
+                'nullable',
+                'string',
+                'max:45',
+                Rule::unique('products', 'sku')->ignore($product->id),
+            ],
+            'barcode' => [
+                'nullable',
+                'string',
+                'max:45',
+                Rule::unique('products', 'barcode')->ignore($product->id),
+            ],
             'price' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id',
         ]);
@@ -132,17 +148,24 @@ class ProductController extends Controller
             return redirect()->route('admin.products.index'); // si existe retorna al listado con el mensaje de error
         }
 
-        if($product->purchaseOrders()->exists() || $product->quotes()->exists()){ // se llama la realcion de purchaseOrders y quotes y se verifica si existe con sql
-            session()->flash('swal', [ // crae una sesion temporal para mostrar el mensaje
+        // cambio por IA: Verificación en productables que cubre compras, ventas, órdenes y cotizaciones
+        if ($product->productables()->exists() || $product->purchaseOrders()->exists() || $product->quotes()->exists()) {
+            session()->flash('swal', [
                 'icon' => 'error',
                 'title' => 'Acción bloqueada',
-                'text' => 'No puedes eliminar este producto porque ya tiene movimientos en las ordenes de compra o cotizaciones.',
+                'text' => 'No puedes eliminar este producto porque está vinculado a compras, ventas, cotizaciones u órdenes.',
             ]);
 
-            return redirect()->route('admin.products.index'); // si existe retorna al listado con el mensaje de error
+            return redirect()->route('admin.products.index');
         }
 
-        $product->delete(); // se elimina el producto
+        // cambio por IA: Eliminación de archivos de imágenes físicas del disco y de la base de datos
+        foreach ($product->images as $image) {
+            Storage::disk('public')->delete($image->path);
+            $image->delete();
+        }
+
+        $product->delete();
 
         session()->flash('swal', [ // crae una sesion temporal para mostrar el mensaje
             'icon' => 'success',

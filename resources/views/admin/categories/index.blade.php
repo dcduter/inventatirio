@@ -29,7 +29,7 @@ title="Categorías | DevStore"
 
   </x-slot>
   {{-- cambio por IA: Inclusión del componente de tabla Livewire para mostrar las categorías/artículos --}}
- @livewire('admin.datables.category-table')
+ @livewire('admin.datatables.category-table')
 
  @push('js')
 

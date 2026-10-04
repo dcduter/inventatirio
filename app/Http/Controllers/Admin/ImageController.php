@@ -14,7 +14,7 @@ class ImageController extends Controller
         $image->delete(); // elimina el registro de la base de datos
 
       /*       // cambio por IA: Especificar el disco 'public' para asegurar que borre el archivo correcto
-        Storage::disk('public')->delete($image->path); 
+        Storage::disk('public')->delete($image->path);
         $image->delete();  */
     }
 }

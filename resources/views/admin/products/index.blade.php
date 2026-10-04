@@ -51,19 +51,19 @@ title="Productos | DevStore"
         
         form.addEventListener('submit', function(e){
 
-          e.preventDefault();
-          Swal.fire({
-          title: "¿Seguro?",
+        e.preventDefault();
+        Swal.fire({
+            title: "¿Seguro?",
           text: "No podras revertir esta acción!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
           confirmButtonText: "Si!",
-          cancelButtonText: "Cancelar",
+            cancelButtonText: "Cancelar",
         }).then((result) => {
-          if (result.isConfirmed) {
-            form.submit();
+            if (result.isConfirmed) {
+                form.submit();
           };
         });
           

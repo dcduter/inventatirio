@@ -54,6 +54,13 @@
 
         ],
 
+        [
+            "name" => 'Almacenes',
+            "icon" => 'fa-solid fa-warehouse',
+            "href" => route('admin.warehouses.index'),
+            "active" => request()->routeIs('admin.warehouses.*')
+        ]
+
 
         // Elemento del menú: Dashboard
     /*     [

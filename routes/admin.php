@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\WarehouseController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -46,5 +47,8 @@ Route::resource('customers', CustomerController::class)->except(['show']);
 
 // ruta para proveedores
 Route::resource('suppliers', SupplierController::class)->except(['show']);
+
+// ruta para almacenes
+Route::resource('warehouses', WarehouseController::class)->except('show');
 
 Route::delete('images/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
