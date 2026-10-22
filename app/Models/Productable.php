@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Productable extends Model
 {
     // Cambio por IA
-    protected $table = 'prodcutables';
+    protected $table = 'productables';
 
     protected $fillable = [
         'product_id',
-        'prodcutable_id',
-        'prodcutable_type',
+        'productable_id',
+        'productable_type',
         'quantity',
         'price',
         'subtotal',

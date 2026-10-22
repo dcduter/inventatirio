@@ -1,4 +1,5 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'dropdownClasses' => ''])
+{{-- cambio por IA: Soporte de modo oscuro en contentClasses para menús desplegables --}}
+@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white dark:bg-gray-800', 'dropdownClasses' => ''])
 
 @php
 $alignmentClasses = match ($align) {

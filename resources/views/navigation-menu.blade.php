@@ -71,6 +71,11 @@
                     </div>
                 @endif
 
+                {{-- cambio por IA: Botón de modo oscuro en la barra de navegación de Jetstream --}}
+                <div class="ms-3">
+                    <x-dark-mode-toggle />
+                </div>
+
                 <!-- Settings Dropdown -->
                 <div class="ms-3 relative">
                     <x-dropdown align="right" width="48">

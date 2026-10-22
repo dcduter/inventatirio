@@ -6,12 +6,13 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
 use App\Models\Product;
+use App\Models\PurchaseOrder;
 use Illuminate\Database\Eloquent\Builder; // Cambio por IA: Importación de Builder para la relación con categorías
 use Rappasoft\LaravelLivewireTables\Views\Columns\ImageColumn;
 
 class ProductTable extends DataTableComponent
 {
-    protected $model = Product::class;
+   // protected $model = Product::class;
 
     public function configure(): void
     {
@@ -43,10 +44,10 @@ class ProductTable extends DataTableComponent
                 }),
         ];
     }
-    
+    /* evitar n+1  */
     public function builder(): Builder
     {
-        return Product::query()
-            ->with(['category', 'images']);
+        return PurchaseOrder::query()
+            ->with(['supplier']);
     }
 }

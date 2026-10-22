@@ -21,7 +21,8 @@ return new class extends Migration
 
             $table->integer('correlative');
 
-            $table->timestamp('date');
+            $table->timestamp('date')
+                ->useCurrent();
 
             $table->foreignId('warehouse_id')
                 ->constrained()

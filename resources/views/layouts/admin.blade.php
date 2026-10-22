@@ -28,15 +28,25 @@
     <!-- cambio por IA: Removida la etiqueta CDN manual de AlpineJS porque Livewire 3 ya incluye AlpineJS integrado y la doble inicialización provocaba la falla de renderizado -->
     <wireui:scripts />
 
-       <!-- Scripts -->
+    <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Styles -->
     @livewireStyles
     {{-- cambio por IA: Agregado el stack de CSS para que funcione Dropzone y otros estilos empujados desde las vistas --}}
     @stack('css')
+
+    {{-- cambio por IA: Detección y aplicación inmediata de modo oscuro para evitar parpadeo blanco (FOUC) --}}
+    <script>
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 
-<body class="font-sans antialiased bg-gray-50">
+{{-- cambio por IA: Soporte de modo oscuro y transición de color en el fondo y texto del body --}}
+<body class="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-200">
 
 
     @include('layouts.includes.admin.navigation')
@@ -63,6 +73,14 @@
     @livewireScripts
 
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+    <script>
+        // escuchar eventos de livewire
+        Livewire.on('swal', (data) => {
+          Swal.fire(data[0]); // se accede al indice 0 para mostrar la alerta
+        });
+    </script>
+        
 
       @if (session('swal'))
           <script>

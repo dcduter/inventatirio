@@ -24,11 +24,12 @@
                      - Condición Blade: Si NO es el primer ítem (! $loop->first), agrega padding a la izquierda (pl-2) 
                        y añade la barra diagonal '/' como separador mediante el pseudoelemento CSS ::before
                 --}}
-                <li class="text-sm leading-normal text-slate-700 {{ !$loop->first ? "pl-2 before:float-left before:pr-2 before:content-['/']" : '' }}">
+                {{-- cambio por IA: Clases con soporte para modo oscuro en migas de pan y separador --}}
+                <li class="text-sm leading-normal text-slate-700 dark:text-gray-300 {{ !$loop->first ? "pl-2 before:float-left before:pr-2 before:content-['/'] dark:before:text-gray-500" : '' }}">
 
                     {{-- 7. Validación: Si el ítem actual contiene la clave 'href', genera un enlace interactivo <a> --}}
                     @isset($item['href'])
-                        <a href="{{ $item['href'] }}" class="opacity-50">
+                        <a href="{{ $item['href'] }}" class="opacity-70 hover:opacity-100 hover:text-blue-600 dark:hover:text-blue-400">
                             {{ $item['name'] }}
                         </a>
                     @else
@@ -43,8 +44,8 @@
 
         {{-- 9. Título de página: Si hay más de un nivel en las migas de pan, muestra el nombre de la ruta actual --}}
         @if (count($breadcrumbs) > 1)
-            {{-- 10. Helper last(): Obtiene el último elemento del arreglo de forma segura --}}
-            <h6 class="font-bold">
+            {{-- 10. Helper last(): Obtiene el último elemento del arreglo de forma segura con soporte para modo oscuro --}}
+            <h6 class="font-bold text-gray-900 dark:text-white">
                 {{ last($breadcrumbs)['name'] }}
             </h6>
         @endif

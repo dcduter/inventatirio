@@ -16,11 +16,21 @@
 
         <!-- Styles -->
         @livewireStyles
+
+        {{-- cambio por IA: Detección y aplicación inmediata de modo oscuro para evitar parpadeo blanco (FOUC) --}}
+        <script>
+            if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        </script>
     </head>
-    <body class="font-sans antialiased">
+    {{-- cambio por IA: Clases con soporte de modo oscuro para el body y contenedor principal --}}
+    <body class="font-sans antialiased text-gray-900 dark:text-gray-100">
         <x-banner />
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->

@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prodcutables', function (Blueprint $table) {
+        Schema::create('productables', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('product_id')
                 ->constrained()
                 ->onDelete('cascade');
-            $table->morphs('prodcutable');
+            $table->morphs('productable');
 
             $table->integer('quantity')
                 ->default(0);
@@ -37,6 +37,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prodcutables');
+        Schema::dropIfExists('productables');
     }
 };

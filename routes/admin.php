@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\WarehouseController;
+use App\Http\Controllers\Admin\PurchaseOrderController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -25,30 +26,37 @@ Route::get('/', function () {
     return view('admin.dashboard');
 })->name('dashboard');
 
+
+
+
+
+
 /**
- * // cambio por IA: Rutas de recursos CRUD para las Categorías.
- * Maneja index, create, store, edit, update, destroy. Se omite 'show'.
+ * // cambio por IA: Ruta POST para subir imágenes mediante Dropzone JS.
  */
-Route::resource('categories', CategoryController::class)->except(['show']);
-
-
+ /* RUTAS INVENTAIO */
 /**
  * // cambio por IA: Rutas de recursos CRUD para los Productos.
  * Maneja toda la gestión del inventario básico. Se omite 'show'.
  */
 Route::resource('products', ProductController::class)->except(['show']);
-
-/**
- * // cambio por IA: Ruta POST para subir imágenes mediante Dropzone JS.
- */
 Route::post('/products/{product}/dropzone', [ProductController::class, 'dropzone'])->name('products.dropzone');
-
-Route::resource('customers', CustomerController::class)->except(['show']);
-
-// ruta para proveedores
-Route::resource('suppliers', SupplierController::class)->except(['show']);
-
+/**
+ * // cambio por IA: Rutas de recursos CRUD para las Categorías.
+ * Maneja index, create, store, edit, update, destroy. Se omite 'show'.
+ */
+Route::resource('categories', CategoryController::class)->except(['show']);
 // ruta para almacenes
 Route::resource('warehouses', WarehouseController::class)->except('show');
 
+//ruta para VENTAS
+Route::resource('customers', CustomerController::class)->except(['show']);
+
+// ruta para COMPRAS
+Route::resource('suppliers', SupplierController::class)->except(['show']);
+// ordenes de compra
+Route::resource('purchase-orders', PurchaseOrderController::class)->only(['index', 'create']);
+
+
+// ruta para imagenes 
 Route::delete('images/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
